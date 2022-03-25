@@ -1,5 +1,6 @@
 const { getDefaultConfig } = require("metro-config");
 const { resolver: defaultResolver } = getDefaultConfig.getDefaultValues();
+const path = require("path");
 
 module.exports = {
   transformer: {
@@ -14,4 +15,5 @@ module.exports = {
     ...defaultResolver,
     sourceExts: [...defaultResolver.sourceExts, "cjs"],
   },
+  watchFolders: [path.join(__dirname, "../shared/")],
 };

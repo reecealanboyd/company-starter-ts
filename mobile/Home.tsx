@@ -1,8 +1,9 @@
+import { useQuery } from "@apollo/client";
 import { StyleSheet, Text, View, Image } from "react-native";
-import { useItemFeed } from "./queries";
+import { ITEM_FEED_QUERY } from "../shared/hooks/useItemFeed";
 
 export default function Home() {
-  const { data, loading } = useItemFeed();
+  const { data, loading } = useQuery(ITEM_FEED_QUERY);
 
   if (loading || !data) {
     return null;
@@ -13,7 +14,7 @@ export default function Home() {
       <Text>Home</Text>
       <View>
         {data.itemFeed.map((item) => (
-          <View style={{ display: "flex" }}>
+          <View style={{ display: "flex" }} key={item.id}>
             <View>
               <Text>{item.name}</Text>
               <Text>{item.description}</Text>
