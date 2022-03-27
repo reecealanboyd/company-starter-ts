@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql, QueryHookOptions, useQuery } from "@apollo/client";
 
 export const ITEM_FEED_QUERY = gql`
   query {
@@ -11,3 +11,7 @@ export const ITEM_FEED_QUERY = gql`
     }
   }
 `;
+
+export const useItemFeed = (options?: QueryHookOptions) => {
+  return useQuery(ITEM_FEED_QUERY, options)
+}

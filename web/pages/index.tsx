@@ -2,11 +2,11 @@ import { useQuery } from "@apollo/client";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { ITEM_FEED_QUERY } from "../../shared/hooks/useItemFeed";
+import { useItemFeed } from "../../shared/hooks/useItemFeed";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
-  const { data, loading } = useQuery(ITEM_FEED_QUERY);
+  const { data, loading } = useItemFeed();
 
   if (loading || !data) {
     return null;
